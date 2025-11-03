@@ -6,6 +6,14 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<nav class="navbar">
+  <a routerLink="/cv" routerLinkActive="active">CV Saya</a>
+  <a routerLink="/contact" routerLinkActive="active">Kontak</a>
+</nav>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
 
 <style>
   :host {
