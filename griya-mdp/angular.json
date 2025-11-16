@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-cv-app": {
+    "griya-mdp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -26,12 +26,7 @@
             ],
             "styles": [
               "src/styles.css"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
@@ -61,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "my-cv-app:build:production"
+              "buildTarget": "griya-mdp:build:production"
             },
             "development": {
-              "buildTarget": "my-cv-app:build:development"
+              "buildTarget": "griya-mdp:build:development"
             }
           },
           "defaultConfiguration": "development"
