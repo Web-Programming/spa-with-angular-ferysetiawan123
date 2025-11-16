@@ -1,0 +1,146 @@
+.section-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  margin-top: 6px;
+  color: #666;
+  font-size: 15px;
+}
+
+.filter-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.filter-buttons button {
+  padding: 6px 18px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  background: white;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.filter-buttons .active {
+  background: #006eff;
+  color: white;
+}
+
+.property-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  justify-content: center;
+  gap: 20px;
+}
+
+.property-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  text-align: left;
+  transition: 0.25s;
+}
+
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #00c853;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.content {
+  padding: 15px;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.location {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #666;
+}
+
+.price {
+  font-size: 18px;
+  margin-top: 12px;
+  font-weight: 700;
+  color: #006eff;
+}
+
+.specs {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #444;
+}
+
+.desc {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #777;
+}
+
+.detail-btn {
+  margin-top: 12px;
+  width: 100%;
+  background: #006eff;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sales-btn {
+  margin-top: 10px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid #006eff;
+  color: #006eff;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #888;
+  display: flex;
+  justify-content: space-between;
+}

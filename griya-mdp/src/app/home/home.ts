@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { LokasiPerumahan } from '../lokasi-perumahan/lokasi-perumahan';
+import { LokasiPerumahanComponent } from '../lokasi-perumahan/lokasi-perumahan';
 
 @Component({
   selector: 'app-home',
-  imports: [LokasiPerumahan],
+  standalone: true,
+  imports: [LokasiPerumahanComponent],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrls: ['./home.css'],
 })
-export class Home {
-
-}
+export class Home {}

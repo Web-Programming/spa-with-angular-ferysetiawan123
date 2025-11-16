@@ -1,8 +1,43 @@
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="section-container">
+  <h2 class="section-title">Pilihan Hunian Unggulan</h2>
+  <p class="section-subtitle">Temukan koleksi hunian terbaik sesuai kebutuhan Anda</p>
+
+  <div class="filter-buttons">
+    <button [class.active]="filterSelected === 'Semua'" (click)="filterSelected='Semua'">Semua</button>
+    <button [class.active]="filterSelected === 'Rumah'" (click)="filterSelected='Rumah'">Rumah</button>
+    <button [class.active]="filterSelected === 'Apartemen'" (click)="filterSelected='Apartemen'">Apartemen</button>
+  </div>
+
+  <div class="property-grid">
+    <div class="property-card" *ngFor="let item of filteredList">
+      
+      <div class="image-wrapper">
+        <img [src]="item.image" alt="{{ item.name }}">
+        <span class="badge">{{ item.status }}</span>
+      </div>
+
+      <div class="content">
+        <h3 class="title">{{ item.name }}</h3>
+        <p class="location">{{ item.location }}</p>
+
+        <p class="price">{{ formatPrice(item.price) }}</p>
+
+        <div class="specs">
+          <span>{{ item.bedrooms }} Kamar</span>
+          <span>{{ item.bathrooms }} Mandi</span>
+          <span>{{ item.area }} m²</span>
+        </div>
+
+        <p class="desc">{{ item.description }}</p>
+
+        <button class="detail-btn">Lihat Detail</button>
+        <button class="sales-btn">Hubungi Sales</button>
+
+        <div class="footer">
+          <span>Posted {{ item.postedDays }} days ago</span>
+          <span>{{ item.rating }} ★</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
