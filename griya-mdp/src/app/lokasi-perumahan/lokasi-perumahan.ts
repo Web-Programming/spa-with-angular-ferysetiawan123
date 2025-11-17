@@ -1,131 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-export interface Housing {
-  id: number;
-  name: string;
-  location: string;
-  price: number;
-  bedrooms: number;
-  bathrooms: number;
-  area: number;
-  image: string;
-  rating: number;
-  status: string;
-  description: string;
-  postedDays: number;
-  type: string;
-}
+import { RouterLink } from '@angular/router';
+import { Housing } from './housing.model';
 
 @Component({
   selector: 'app-lokasi-perumahan',
-  standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './lokasi-perumahan.html',
-  styleUrls: ['./lokasi-perumahan.css']
+  styleUrl: './lokasi-perumahan.css',
 })
-export class LokasiPerumahanComponent {
+export class LokasiPerumahan {
+  @Input() housing: Housing = {
+    id: 0,
+    title: 'Griya Asri Residence',
+    location: 'Jakarta Selatan',
+    price: 850000000,
+    bedrooms: 3,
+    bathrooms: 2,
+    area: 120,
+    image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&h=400&fit=crop',
+    rating: 4.5,
+    status: 'Available',
+    description: 'Hunian modern dengan desain minimalis, dilengkapi fasilitas lengkap dan akses mudah ke berbagai tempat strategis.',
+    postedDays: 2
+  };
 
-  filterSelected = 'Semua';
-
-  housingList: Housing[] = [
-    {
-      id: 1,
-      name: 'Lakeview Harmony Residence',
-      location: 'Bandung, Indonesia',
-      price: 720000000,
-      bedrooms: 3,
-      bathrooms: 2,
-      area: 110,
-      image: 'https://i.imgur.com/6V6YqUR.jpg',
-      rating: 4.7,
-      status: 'Available',
-      description: 'Hunian premium dengan pemandangan danau dan udara sejuk khas Bandung.',
-      postedDays: 2,
-      type: 'Rumah'
-    },
-    {
-      id: 2,
-      name: 'Sunrise Garden Estate',
-      location: 'Semarang, Indonesia',
-      price: 540000000,
-      bedrooms: 2,
-      bathrooms: 2,
-      area: 95,
-      image: 'https://i.imgur.com/AMoZz3L.jpg',
-      rating: 4.5,
-      status: 'Available',
-      description: 'Perumahan modern dengan taman hijau dan fasilitas keluarga lengkap.',
-      postedDays: 5,
-      type: 'Rumah'
-    },
-    {
-      id: 3,
-      name: 'Hillside Modern Villa',
-      location: 'Batu, Malang, Indonesia',
-      price: 890000000,
-      bedrooms: 4,
-      bathrooms: 3,
-      area: 150,
-      image: 'https://i.imgur.com/lKnZ0dC.jpg',
-      rating: 4.9,
-      status: 'Premium',
-      description: 'Villa modern dengan udara dingin dan pemandangan pegunungan.',
-      postedDays: 1,
-      type: 'Rumah'
-    },
-    {
-      id: 4,
-      name: 'Riverview Grand Residence',
-      location: 'Makassar, Indonesia',
-      price: 630000000,
-      bedrooms: 3,
-      bathrooms: 2,
-      area: 115,
-      image: 'https://i.imgur.com/xtJdZE8.jpg',
-      rating: 4.6,
-      status: 'Available',
-      description: 'Hunian dekat sungai dengan akses cepat ke pusat kota.',
-      postedDays: 3,
-      type: 'Rumah'
-    },
-    {
-      id: 5,
-      name: 'Tropical Breeze Housing',
-      location: 'Bali, Indonesia',
-      price: 1100000000,
-      bedrooms: 3,
-      bathrooms: 3,
-      area: 140,
-      image: 'https://i.imgur.com/kKhdZQP.jpg',
-      rating: 4.9,
-      status: 'Booking',
-      description: 'Hunian tropis bernuansa resort with vibes Bali.',
-      postedDays: 6,
-      type: 'Rumah'
-    },
-    {
-      id: 6,
-      name: 'Citylight Modern Apartment',
-      location: 'Surabaya, Indonesia',
-      price: 480000000,
-      bedrooms: 2,
-      bathrooms: 1,
-      area: 70,
-      image: 'https://i.imgur.com/j6cY4tF.jpg',
-      rating: 4.4,
-      status: 'Available',
-      description: 'Apartemen modern dengan view kota.',
-      postedDays: 4,
-      type: 'Apartemen'
-    }
-  ];
-
-  get filteredList() {
-    if (this.filterSelected === 'Semua') return this.housingList;
-    return this.housingList.filter(x => x.type === this.filterSelected);
+  getStars(): number[] {
+    const fullStars = Math.floor(this.housing.rating);
+    return Array(fullStars).fill(0);
   }
 
+  hasHalfStar(): boolean {
+    return this.housing.rating % 1 >= 0.5;
+  }
+
+  getEmptyStars(): number[] {
+    const fullStars = Math.floor(this.housing.rating);
+    const hasHalf = this.hasHalfStar() ? 1 : 0;
+    const emptyStars = 5 - fullStars - hasHalf;
+    return Array(emptyStars).fill(0);
+  }
+
+  // Format harga ke Rupiah
   formatPrice(price: number): string {
     return new Intl.NumberFormat('id-ID', {
       style: 'currency',
